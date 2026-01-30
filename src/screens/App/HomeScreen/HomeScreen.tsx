@@ -5,6 +5,7 @@ import { Xmls } from '../../../assets/icons/Xmls'
 import SvgIcon from '../../../assets/svgs/SvgIcon'
 import Catagories from '../../../components/Catagories'
 import SwiperComp from '../../../components/SwiperComp'
+import SimpleTimer from '../../../components/commons/SimpleTimer'
 
 
 
@@ -64,6 +65,26 @@ export default function HomeScreen() {
       {/* Swiper Component */}
       
       <SwiperComp />
+
+      {/* Deal of the day */}
+
+      <View style={styles.dealOfDaySection}>
+        <View style={{flexDirection:'column',gap:5 }}>
+        <Text style={styles.dealOfDayText}>Deal of the Day</Text>
+        <View style={styles.dealtime}>
+          <SvgIcon xml={Xmls.clock} width={18} height={18} />
+        <SimpleTimer seconds={22 * 60 * 60 + 55 * 60 + 20} />
+        </View>
+        </View>
+        <View style={styles.viewallbtn}>
+        <TouchableOpacity>
+          <Text style={styles.viewallTxt}>View all</Text>
+        </TouchableOpacity>
+          <SvgIcon xml={Xmls.arrow} width={18} height={18} />
+        </View>
+
+      </View>
+
 
     </View>
   )

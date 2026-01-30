@@ -3,12 +3,22 @@ import React from 'react'
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import { ImageBackground } from 'react-native';
 import { theme } from './theme';
+import SvgIcon from '../assets/svgs/SvgIcon';
+import { Xmls } from '../assets/icons/Xmls';
 
 const { width } = Dimensions.get('window');
 
 export default function SwiperComp() {
 
-      const promoCards = [
+  type PromoCard = {
+    id: string;
+    title: string;
+    discount: string;
+    description: string;
+    image: any;
+  };
+
+  const promoCards: PromoCard[] = [
     {
       id: '1',
       title: 'Beauty',
@@ -31,27 +41,36 @@ export default function SwiperComp() {
       image: require('../assets/images/HomeScreen/girlWitbag.png'),
     },
   ];
+
+  const renderItem = ({ item }: { item: PromoCard }) => (
+    <View style={styles.cardWrapper}>
+      <ImageBackground source={item.image} style={styles.cardimage}>
+        <View style={styles.cardContent}>
+          <Text style={styles.discountText}>{item.discount}</Text>
+          <Text style={styles.descriptionText}>{item.description}</Text>
+  <TouchableOpacity style={styles.shopNowButton}>
+            <Text style={styles.shopNowButtonText}>Shop Now </Text>
+            <SvgIcon xml={Xmls.arrow} width={18} height={18} />
+          </TouchableOpacity>
+        </View>
+
+        </ImageBackground>
+    </View>
+
+  )
+
+
   return (
     <View style={styles.container}>
       <SwiperFlatList  
+      data={promoCards}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
       showPagination
       paginationStyleItem={styles.paginationItem}
-      >
-        {promoCards.map(({id,  discount, description, image}) => (
-          <View key={id} style={styles.cardWrapper}>
-            <ImageBackground key={id} source={image} style={styles.cardimage}>
-                <View style={styles.cardContent}>
-                    <Text style={styles.discountText}>{discount}</Text>
-                    <Text style={styles.descriptionText}>{description}</Text>
-                    <TouchableOpacity style={styles.shopNowButton}>
-                        <Text>Shop Now</Text>
-                    </TouchableOpacity>
-                </View>
-            </ImageBackground>
-            </View>
-        ))}
-
-      </SwiperFlatList>
+      paginationDefaultColor={theme.colors.gray}
+      paginationActiveColor={'#FFA3B3'}
+      />
  
     </View>
   )
@@ -60,13 +79,13 @@ export default function SwiperComp() {
 const styles = StyleSheet.create({
     container:{
        height:230,
-       width:370,
+       width:'100%',
      
 
     },
     cardWrapper:{
-      width:width - 40,
-      marginHorizontal:20,
+      width:width - 41,
+    
       borderRadius:25,
     
     },
@@ -81,19 +100,26 @@ const styles = StyleSheet.create({
       height:189,
       width:'100%',
       resizeMode:'cover',
-      padding:15,
       alignContent:'center',
       justifyContent:'center',
     },
+     cardContent:{
+      padding:15,
+      justifyContent:'space-between',
+      height:'90%',
+    },
+
     discountText:{
       fontSize:24,
       fontFamily:theme.fonts.bold,
       color:'white',
     },
-    cardContent:{},
+   
     descriptionText:{
-      width:100,
-      backgroundColor:theme.colors.white,
+      width:120,
+      fontSize:14,
+      fontFamily:theme.fonts.regular,
+      color:'white',
     },
     shopNowButton:{
       borderRadius:5,
@@ -103,6 +129,13 @@ const styles = StyleSheet.create({
       height:35,
       justifyContent:'center',
       alignItems:'center',
-    
+      flexDirection:'row',
+      gap:5,    
     },
+    shopNowButtonText:{
+      color:theme.colors.white,
+      fontFamily:theme.fonts.semiBold,
+      fontSize:12,
+      
+    }
 })

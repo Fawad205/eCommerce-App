@@ -73,5 +73,37 @@ export const styles = StyleSheet.create({
     },
  
 
-    swiper:{},
+    dealOfDaySection:{
+        backgroundColor:'#4392F9',
+        borderRadius:10,
+        padding:15,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        marginTop:10,
+    },
+    dealtime:{
+        flexDirection:'row',
+    },
+    dealOfDayText:{
+        paddingVertical:5,
+        fontSize:18,
+        fontFamily:theme.fonts.semiBold,
+        color:theme.colors.white,
+        
+    },
+    viewallbtn:{
+        borderWidth:1,
+        borderColor:theme.colors.white,
+        borderRadius:5,
+        padding:10,
+        flexDirection:'row',
+        gap:8,        
+    },
+    viewallTxt:{
+        color:theme.colors.white,
+        fontFamily:theme.fonts.semiBold,
+        fontSize:12,
+    },
+    
 })
