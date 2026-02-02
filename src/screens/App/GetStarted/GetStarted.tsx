@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, ImageBackground } from 'react-native'
 import React from 'react'
 import { styles } from './styles' 
 import Button from '../../../components/commons/Button'
-
-
+import { BottomTabBar } from '@react-navigation/bottom-tabs'
+import BottomTabs from '../../../stacks/BottomTabs'
 
 export default function GetStarted({ navigation }: any) {
   
@@ -23,7 +23,7 @@ export default function GetStarted({ navigation }: any) {
         <Button
           text="Get Started"
           style={styles.button}
-          onPress={() => navigation.navigate('HomeScreen')}
+          onPress={() => navigation.navigate('BottomTabs')}
         />
         </View>
       </ImageBackground>

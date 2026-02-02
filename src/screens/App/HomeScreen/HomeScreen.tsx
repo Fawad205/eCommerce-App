@@ -6,6 +6,9 @@ import SvgIcon from '../../../assets/svgs/SvgIcon'
 import Catagories from '../../../components/Catagories'
 import SwiperComp from '../../../components/SwiperComp'
 import SimpleTimer from '../../../components/commons/SimpleTimer'
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native'
+
 
 
 
@@ -85,6 +88,7 @@ export default function HomeScreen() {
 
       </View>
 
+      
 
     </View>
   )
