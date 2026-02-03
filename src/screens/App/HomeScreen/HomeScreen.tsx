@@ -8,12 +8,16 @@ import SwiperComp from '../../../components/SwiperComp'
 import SimpleTimer from '../../../components/commons/SimpleTimer'
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native'
+import ProductCardComp from '../../../components/ProductCardComp'
+import { ScrollView } from 'react-native-gesture-handler'
+import { theme } from '../../../components/theme'
 
 
 
 
 export default function HomeScreen() {
   return (
+    <ScrollView>
     <View style={styles.container}>
 
       <View>
@@ -87,10 +91,44 @@ export default function HomeScreen() {
         </View>
 
       </View>
+    {/* productCards */}
 
-      
+    <View style={{flexDirection:'row'}}>
+      <ProductCardComp 
+      image={require('../../../assets/images/HomeScreen/Kurta (2).png')}
+      title="Women Printed Kurta"
+  description="Neque porro quisquam est qui dolorem ipsum quia"
+  price={1500}
+  originalPrice={2499}
+  discountPercent="40% Off"
+  rating={4.5}
+  reviewsCount={56890}
+      />
+    <ProductCardComp 
+      image={require('../../../assets/images/HomeScreen/shoes.png')}
+      title="HRX by Hrithik Roshan"
+  description="Neque porro quisquam est qui dolorem ipsum quia"
+  price={2499}
+  originalPrice={4999}
+  discountPercent="50% Off"
+  rating={4.5}
+  reviewsCount={344567}
+      />
+      </View>
+
+      {/* Special offer  */}
+
+      <View style={styles.offerContainer}>
+        <Image source={require('../../../assets/images/HomeScreen/offer.png')}/>
+        <View style={styles.offerTxtContainer}>
+          <Text style={{fontFamily:theme.fonts.semiBold,fontSize:18}}>Special Offers 😱</Text>
+          <Text style={{fontFamily:theme.fonts.regular,fontSize:14}}>We make sure you get the offer you need at best prices</Text>
+        </View>
+
+      </View>
 
     </View>
+    </ScrollView>
   )
 }
 

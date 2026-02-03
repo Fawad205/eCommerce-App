@@ -2,7 +2,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { theme } from '../theme';
 import { TextInput } from 'react-native-gesture-handler';
-import { useIsFocused } from '@react-navigation/native';
 
 type inputProps = {placeholder?: string,placeholderTextColor?: string,icons?: string ,secureTextEntry?: boolean
   ,leftIcon? : React.ReactNode

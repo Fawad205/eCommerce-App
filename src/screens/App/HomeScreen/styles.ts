@@ -105,5 +105,17 @@ export const styles = StyleSheet.create({
         fontFamily:theme.fonts.semiBold,
         fontSize:12,
     },
+
+    offerContainer:{
+        flexDirection:'row',
+        gap:25,
+        backgroundColor:'#ffff',
+        borderRadius:10
+    },
+    offerTxtContainer:{
+        width:200,
+       gap:5,
+       
+    }
     
 })

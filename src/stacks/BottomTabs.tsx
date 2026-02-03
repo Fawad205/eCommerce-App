@@ -17,7 +17,7 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomTabs() {
   return (
-    <Tab.Navigator initialRouteName='HomeScreen' screenOptions={{
+    <Tab.Navigator initialRouteName='Home' screenOptions={{
         headerShown:false,
         tabBarShowLabel:true,
         tabBarLabelPosition:'below-icon',
