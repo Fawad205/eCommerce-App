@@ -1,21 +1,34 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput, ImageBackground } from 'react-native'
+import React, { useRef } from 'react'
 import { styles } from './styles'
 import { Xmls } from '../../../assets/icons/Xmls'
 import SvgIcon from '../../../assets/svgs/SvgIcon'
 import Catagories from '../../../components/Catagories'
 import SwiperComp from '../../../components/SwiperComp'
 import SimpleTimer from '../../../components/commons/SimpleTimer'
-import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native'
 import ProductCardComp from '../../../components/ProductCardComp'
 import { ScrollView } from 'react-native-gesture-handler'
 import { theme } from '../../../components/theme'
+import {format, getDate} from 'date-fns';
 
 
 
 
 export default function HomeScreen() {
+
+  const scrollRef = useRef<ScrollView>(null)
+  const scrollRight = () =>{
+    scrollRef.current?.scrollTo({
+      x:300,
+      animated:true
+    })
+  }
+
+  const currentdate= new Date();
+
+ const customFormattedDate = format(currentdate , "dd/MM/yyyy ")
+
+
   return (
     <ScrollView>
     <View style={styles.container}>
@@ -124,9 +137,155 @@ export default function HomeScreen() {
           <Text style={{fontFamily:theme.fonts.semiBold,fontSize:18}}>Special Offers 😱</Text>
           <Text style={{fontFamily:theme.fonts.regular,fontSize:14}}>We make sure you get the offer you need at best prices</Text>
         </View>
-
       </View>
 
+      {/* Flat and Heels */}
+
+      <View style={styles.flatAndHeel}>
+
+  {/* 🔹 Background images layer */}
+  <View style={styles.bgLayer}>
+    <Image
+      source={require('../../../assets/images/HomeScreen/liner.png')}
+      style={styles.liner}
+    />
+
+    <Image
+      source={require('../../../assets/images/HomeScreen/stars.png')}
+      style={styles.stars}
+    />
+
+    <Image
+      source={require('../../../assets/images/HomeScreen/heal.png')}
+      style={styles.heels}
+    />
+  </View>
+
+  {/* 🔹 Content layer */}
+  <View style={styles.content}>
+    <Text style={styles.title}>Flat and Heels</Text>
+    <Text style={styles.subTitle}>
+      Stand a chance to get rewarded
+    </Text>
+
+    <TouchableOpacity style={styles.button}>
+      <Text style={styles.buttonText}>Visit now </Text>
+      <SvgIcon xml={Xmls.arrow}/>
+    </TouchableOpacity>
+  </View>
+
+</View>
+
+
+
+
+      {/* Trending Products */}
+
+      <View style={styles.trendingProductSection}>
+        <View style={{flexDirection:'column',gap:5 }}>
+        <Text style={styles.dealOfDayText}>Trending Products</Text>
+        <View style={styles.dealtime}>
+          <SvgIcon xml={Xmls.calender} width={18} height={18} />
+          <Text style={{color:'#fff'}}>Last Date {customFormattedDate}</Text>
+        </View>
+        </View>
+        <View style={styles.viewallbtn}>
+        <TouchableOpacity>
+          <Text style={styles.viewallTxt}>View all</Text>
+        </TouchableOpacity>
+          <SvgIcon xml={Xmls.arrow} width={18} height={18} />
+        </View>
+      </View>
+        
+          {/* bottom product card */}
+          
+          <View style={{ position: 'relative' }}>
+  <TouchableOpacity
+    onPress={scrollRight}
+    style={{
+      position: 'absolute',
+      right: 12,
+      top: '40%',
+      transform: [{ translateY: -12 }],
+      zIndex: 20,
+      
+      width: 32,
+      height: 32,
+      borderRadius: 16,
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    <Image source={require('../../../assets/images/HomeScreen/sliderArrow.png')}/>
+  </TouchableOpacity>
+
+  <ScrollView
+    ref={scrollRef}
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    contentContainerStyle={{ paddingRight: 40 }}
+  >
+    <ProductCardComp
+      image={require('../../../assets/images/HomeScreen/watch.png')}
+      price={650}
+      description={`IWC Schaffhausen
+2021 Pilot's Watch SIHH 2019 44mm`}
+      originalPrice={1599}
+      discountPercent="60% off"
+      showTitle={false}
+      showRating={false}
+    />
+
+    <ProductCardComp
+      image={require('../../../assets/images/HomeScreen/whiteShoes.png')}
+      price={650}
+      description={`Labbin White Sneakers
+For Men and Female`}
+      originalPrice={1250}
+      discountPercent="70% off"
+      showTitle={false}
+      showRating={false}
+    />
+  </ScrollView>
+</View>
+
+  {/* Hot SummerSale */}
+  <View style={styles.hotSale}>
+    <Image source={require('../../../assets/images/HomeScreen/hotSale.png')}/>
+    <View style={{flexDirection:'row',justifyContent:'space-between',padding:10}}>
+      <View>
+    <Text style={{fontFamily:theme.fonts.semiBold,fontSize:18}}>New Arrivals</Text>
+    <Text style={{fontFamily:theme.fonts.regular}}>Summer’ 25 Collections</Text>
+    </View>
+    <View style={{
+      backgroundColor:theme.colors.primary,
+      borderRadius:5,
+      flexDirection:'row',
+      justifyContent:'center',
+      alignItems:'center',
+      padding:8,
+      gap:8,
+      height:30
+
+    }}>
+        <TouchableOpacity>
+          <Text style={styles.viewallTxt}>View all</Text>
+        </TouchableOpacity>
+          <SvgIcon xml={Xmls.arrow} width={18} height={18} />
+        </View>
+    </View>
+  </View>
+
+  {/* Sponsered */}
+  <View style={styles.sponserd}>
+    <Text style={{fontFamily:theme.fonts.semiBold,padding:5,fontSize:18}}>Sponserd</Text>
+   <Image source={require('../../../assets/images/HomeScreen/browwenShoes.png')}/>
+   <View style={{flexDirection:'row',marginTop:5,justifyContent:'space-between',alignItems:'center'}}>
+   <Text  style={{fontFamily:theme.fonts.bold,padding:5,fontSize:18}} >up to 50% Off </Text>
+   <SvgIcon xml={Xmls.sliderArrow} width={18} height={18}/>
+   </View>
+  </View>
+      
     </View>
     </ScrollView>
   )

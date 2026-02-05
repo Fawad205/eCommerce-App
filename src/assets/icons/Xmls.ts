@@ -149,6 +149,44 @@ Settingsf:`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="ht
 </clipPath>
 </defs>
 </svg>
-`
+`,
+calender:`<svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.66667 6H4V7.33333H2.66667V6ZM12 2.66667V12C12 12.7333 11.4 13.3333 10.6667 13.3333H1.33333C0.593333 13.3333 0 12.7333 0 12L0.00666666 2.66667C0.00666666 1.93333 0.593333 1.33333 1.33333 1.33333H2V0H3.33333V1.33333H8.66667V0H10V1.33333H10.6667C11.4 1.33333 12 1.93333 12 2.66667ZM1.33333 4H10.6667V2.66667H1.33333V4ZM10.6667 12V5.33333H1.33333V12H10.6667ZM8 7.33333H9.33333V6H8V7.33333ZM5.33333 7.33333H6.66667V6H5.33333V7.33333Z" fill="white"/>
+</svg>
+`,
+sliderArrow:`<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_ii_1_17117)">
+<circle cx="20" cy="20" r="20" fill="url(#paint0_radial_1_17117)"/>
+</g>
+<g clip-path="url(#clip0_1_17117)">
+<path d="M18.0201 14L16.6101 15.41L21.1901 20L16.6101 24.59L18.0201 26L24.0201 20L18.0201 14Z" fill="#232327"/>
+</g>
+<defs>
+<filter id="filter0_ii_1_17117" x="-4" y="-4" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-6" dy="-6"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.768627 0 0 0 0 0.768627 0 0 0 0 0.768627 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_17117"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="6" dy="6"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.870588 0 0 0 0 0.858824 0 0 0 0 0.858824 0 0 0 1 0"/>
+<feBlend mode="normal" in2="effect1_innerShadow_1_17117" result="effect2_innerShadow_1_17117"/>
+</filter>
+<radialGradient id="paint0_radial_1_17117" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(19.5918 20.4082) rotate(90) scale(38.7755)">
+<stop stop-color="#BBBBBB"/>
+<stop offset="1" stop-color="#BBBBBB" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip0_1_17117">
+<rect width="24" height="24" fill="white" transform="translate(8 8)"/>
+</clipPath>
+</defs>
+</svg>
+`,
 
 };

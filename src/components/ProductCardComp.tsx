@@ -3,16 +3,19 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ImageSourcePropType } 
 import { theme } from '../../eCommerce-App/src/components/theme'
 
 interface ProductCardProps {
-  image: ImageSourcePropType
-  title: string
+  image?: ImageSourcePropType
+  title?: string
   description?: string
-  price: number
+  price?: number
   originalPrice?: number
   discountPercent?: string
   rating?: number 
   reviewsCount?: number
- 
-}
+  showTitle?: boolean
+  showRating?: boolean
+  showStars?: boolean
+
+}  
 
 export default function ProductCardComp({
   image,
@@ -23,21 +26,34 @@ export default function ProductCardComp({
   discountPercent,
   rating = 0,
   reviewsCount = 0,
- 
+  showTitle = true,
+  showRating = true,
+  showStars = true,
+
 }: ProductCardProps) {
   const stars = Array.from({ length: 5 }).map((_, i) => (i < Math.round(rating) ? '★' : '☆'))
+
+  const displayTitle = title ?? ''
+  const displayPrice = price
 
   return (
     <View style={styles.card}  >
       <View style={styles.imageWrapper}>
-        <Image source={image} style={styles.image} resizeMode="contain" />
-        
-      </View>
+        {image ? (
+          <Image source={image} style={styles.image} resizeMode="contain" />
+        ) : (
+          <View style={[styles.image, styles.placeholder]}>
+            <Text style={styles.placeholderText}>No image</Text>
+          </View>
+        )}
+      </View> 
 
       <View style={styles.content}>
-        <Text style={styles.title} >
-          {title}
-        </Text>
+        {showTitle ? (
+          <Text style={styles.title} >
+            {displayTitle}
+          </Text>
+        ) : null}  
         
           <Text style={styles.description} >
             {description}
@@ -45,21 +61,30 @@ export default function ProductCardComp({
         
         <View style={styles.rowBetween}>
           <View>
-            <Text style={styles.price}>₹{price}</Text>
-            <View style={{flexDirection:'row',gap:5}}>
-              <Text style={styles.originalPrice}>₹{originalPrice}</Text>
-              {discountPercent ? (
-          <View style={styles.discountBadge}>
-            <Text style={styles.discountText}>{discountPercent}</Text>
-          </View>
-        ) : null}
-              </View>
-          </View>
-
+            {displayPrice !== undefined ? (
+              <>
+                <Text style={styles.price}>₹{displayPrice}</Text>
+                <View style={{flexDirection:'row',gap:5}}>
+                  {originalPrice !== undefined ? (
+                    <Text style={styles.originalPrice}>₹{originalPrice}</Text>
+                  ) : null}
+                  {discountPercent ? (
+                    <View style={styles.discountBadge}>
+                      <Text style={styles.discountText}>{discountPercent}</Text>
+                    </View>
+                  ) : null}
+                </View>
+              </>
+            ) : (
+              <Text style={styles.price}>—</Text>
+            )}
+          </View> 
+          {showRating && rating > 0 ? (
           <View style={styles.ratingWrap}>
-            <Text style={styles.stars}>{stars.join(' ')}</Text>
+            {showStars ? <Text style={styles.stars}>{stars.join(' ')}</Text> : null}
             <Text style={styles.reviews}>{reviewsCount}</Text>
           </View>
+          ) : null }
         </View>
       </View>
     </View>
@@ -78,7 +103,20 @@ const styles = StyleSheet.create({
     paddingBottom:10
   },
   image: {
-    borderRadius:5
+    borderRadius:5,
+    width: '100%',
+    height: 140,
+  },
+  placeholder: {
+    width: '100%',
+    height: 140,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  placeholderText: {
+    color: theme.colors.gray,
+    fontFamily: theme.fonts.regular,
   },
   discountBadge: {
     
