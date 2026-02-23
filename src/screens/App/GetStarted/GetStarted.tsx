@@ -22,7 +22,8 @@ export default function GetStarted({ navigation }: any) {
 
         <Button
           text="Get Started"
-          style={styles.button}
+          style={{width:300}}
+
           onPress={() => navigation.navigate('BottomTabs')}
         />
         </View>

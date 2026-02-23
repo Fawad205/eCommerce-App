@@ -1,5 +1,15 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, TouchableOpacity, ImageSourcePropType } from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ImageSourcePropType,
+  ViewStyle,
+  ImageStyle,
+  TextStyle,
+} from 'react-native'
 import { theme } from '../../eCommerce-App/src/components/theme'
 
 interface ProductCardProps {
@@ -14,6 +24,11 @@ interface ProductCardProps {
   showTitle?: boolean
   showRating?: boolean
   showStars?: boolean
+  style?: ViewStyle
+  imageStyle?: ImageStyle
+  contentStyle?: ViewStyle
+  titleStyle?: TextStyle
+  showShadow?: boolean
 
 }  
 
@@ -29,6 +44,11 @@ export default function ProductCardComp({
   showTitle = true,
   showRating = true,
   showStars = true,
+  style,
+  imageStyle,
+  contentStyle,
+  titleStyle,
+  showShadow =false
 
 }: ProductCardProps) {
   const stars = Array.from({ length: 5 }).map((_, i) => (i < Math.round(rating) ? '★' : '☆'))
@@ -37,10 +57,10 @@ export default function ProductCardComp({
   const displayPrice = price
 
   return (
-    <View style={styles.card}  >
+    <View style={[styles.card,showShadow && styles.shadow, style]}  >
       <View style={styles.imageWrapper}>
         {image ? (
-          <Image source={image} style={styles.image} resizeMode="contain" />
+          <Image source={image} style={[styles.image, imageStyle]} resizeMode="contain" />
         ) : (
           <View style={[styles.image, styles.placeholder]}>
             <Text style={styles.placeholderText}>No image</Text>
@@ -48,9 +68,9 @@ export default function ProductCardComp({
         )}
       </View> 
 
-      <View style={styles.content}>
+      <View style={[styles.content, contentStyle]}>
         {showTitle ? (
-          <Text style={styles.title} >
+          <Text style={[styles.title, titleStyle]} >
             {displayTitle}
           </Text>
         ) : null}  
@@ -94,18 +114,30 @@ export default function ProductCardComp({
 const styles = StyleSheet.create({
   card: {
    
-   height:340,
-   width:'50%',
-   overflow:'hidden'
+   width:175,
+   overflow:'hidden',
+   backgroundColor:'#ffff',
+   margin:5,
+  
+   flexDirection:'column',
+  
+  },
+  shadow:{
+    backgroundColor:'#ffffff',
+    elevation:5,
+    shadowColor:'#000000',
+    shadowOffset:{width:1,height:1},
+    shadowOpacity:0.4,
+    shadowRadius:3,
+    
   },
   imageWrapper: {
-    paddingTop:20,
-    paddingBottom:10
+    
   },
   image: {
     borderRadius:5,
     width: '100%',
-    height: 140,
+    
   },
   placeholder: {
     width: '100%',
@@ -126,7 +158,7 @@ const styles = StyleSheet.create({
     fontFamily:theme.fonts.regular,
   },
   content: {
- 
+    padding:8
   },
   title: {
     fontFamily:theme.fonts.semiBold,
@@ -138,7 +170,7 @@ const styles = StyleSheet.create({
     
   },
   price: {
-   fontFamily:theme.fonts.regular,
+   fontFamily:theme.fonts.semiBold,
   },
   originalPrice: {
     fontFamily:theme.fonts.regular,

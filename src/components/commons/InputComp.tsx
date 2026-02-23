@@ -1,7 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 import React from 'react'
 import { theme } from '../theme';
 import { TextInput } from 'react-native-gesture-handler';
+import { useIsFocused } from '@react-navigation/native';
 
 type inputProps = {placeholder?: string,placeholderTextColor?: string,icons?: string ,secureTextEntry?: boolean
   ,leftIcon? : React.ReactNode
@@ -9,13 +10,15 @@ type inputProps = {placeholder?: string,placeholderTextColor?: string,icons?: st
   value?: string;
   onchangeText?: (text: string) => void;
   error?: string;
+  containerStyle?: ViewStyle;
+  
 };
 
 export default function InputFileds( props: inputProps) {
   const [isFocused, setIsFocused] = React.useState(false);
   return (
     <>
-    <View style={[styles.inputWrapper,{borderColor: isFocused? theme.colors.primary : theme.colors.gray},]}>
+    <View style={[styles.inputWrapper,{borderColor: isFocused? theme.colors.primary : theme.colors.gray}, props.containerStyle]}>
 
     {props.leftIcon && (
         <View style={styles.leftIcon}>

@@ -14,7 +14,7 @@ import {format, getDate} from 'date-fns';
 
 
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}:any) {
 
   const scrollRef = useRef<ScrollView>(null)
   const scrollRight = () =>{
@@ -36,11 +36,12 @@ export default function HomeScreen() {
       <View>
 
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Image source={require('../../../assets/images/HomeScreen/logs.png')} />
+        <TouchableOpacity>          <Image source={require('../../../assets/images/HomeScreen/logs.png')} />
         </TouchableOpacity>
         <Image  source={require('../../../assets/images/HomeScreen/logo.png')} />
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.getParent('RootStack')?.navigate('Profile')}
+        >
           <Image source={require('../../../assets/images/HomeScreen/userprofile.png')} />
         </TouchableOpacity>
       </View>
@@ -234,6 +235,7 @@ export default function HomeScreen() {
       discountPercent="60% off"
       showTitle={false}
       showRating={false}
+      style={{height:240}}
     />
 
     <ProductCardComp
@@ -245,6 +247,7 @@ For Men and Female`}
       discountPercent="70% off"
       showTitle={false}
       showRating={false}
+      style={{height:240}}
     />
   </ScrollView>
 </View>
