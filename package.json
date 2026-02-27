@@ -23,6 +23,7 @@
     "react": "19.2.0",
     "react-native": "0.83.0",
     "react-native-countdown-component": "^2.7.1",
+    "react-native-element-dropdown": "^2.12.4",
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.29.1",
     "react-native-masonry-list": "^2.16.2",
